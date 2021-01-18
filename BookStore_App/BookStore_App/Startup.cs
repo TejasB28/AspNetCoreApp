@@ -19,6 +19,10 @@ namespace BookStore_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();     //For setting up MVC envirnment
+
+#if DEBUG
+            services.AddRazorPages().AddRazorRuntimeCompilation();  //For Runtime compilation of razor file
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
