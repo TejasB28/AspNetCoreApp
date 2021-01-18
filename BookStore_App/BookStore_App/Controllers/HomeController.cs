@@ -8,9 +8,19 @@ namespace BookStore_App.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()       //Action Method and It is default name conventions for MVC applications.
+        public ViewResult Index()       //Action Method and It is default name conventions for MVC applications.
         {
-            return "Tejas";
+            return View();
+        }
+
+        public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        public ViewResult ContactUs()
+        {
+            return View();
         }
     }
 }

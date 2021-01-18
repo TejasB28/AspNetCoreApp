@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+
+}
+@*razor viewengine - How we write basic logic*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to Book store application</h1>
+    <h1>@DateTime.Now.ToString("dd-MM-yyyy")</h1>
+    <h1>Sum = @(3+5)</h1>
+    <hr />
+    <h1>Multiline</h1>
+    @{
+        int a = 10;
+        int b = 20;
+        int c = a + b;
+    }
+
+    <h1>@c</h1>
+    <h2>email - tejasbora@gmail.com</h2>
+    <h2>Twitter - @@tejas</h2>
+
+    @*variable initialization*@
+
+    @*@{
+            int a = 9;
+            int b = 0;
+        }*@
+
+    @*if,else,else if*@
+
+    @*@if(a == 5)
+        {
+            a++;
+            <h1>Hello from if block and value is = @a</h1>
+        }
+        else if(a == 10)
+        {
+            <h1>hello from else if block</h1>
+        }
+        else
+        {
+            <h1>Hello from else block</h1>
+        }*@
+
+    @*Ternary operator*@
+
+    @*<h1>Ternary - @(a==10 ? b=10:b=5)</h1>
+        <h1>value of b = @b</h1>*@
+
+    @*Switch case
+
+        @{
+            int a = 10;
+        }
+
+        @switch (a)
+        {
+            case 1:<h1>I am 1</h1>
+                break;
+            case 2:<h1>I am 2</h1>
+                break;
+            case 3:<h1>I am 3</h1>
+                break;
+            case 4:<h1>I am 4</h1>
+                break;
+            default:<h1>I am default</h1>
+                break;
+        }*@
+
+    @*@for (int i = 0; i < 10; i++)
+        {
+            <h1>Welcome to Book store application index  @i</h1>
+        }*@
+
+    @*For each loop
+            @{
+            var list = new List<int> { 1,2,3,4,5 };
+        }
+
+        @foreach (var item in list)
+        {
+            <h1>@item</h1>
+        }*@
+    <p>This is the Home page of our bookstore application</p>
+</body>
+</html>
