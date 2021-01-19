@@ -4,8 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>BookStore Application</title>
-    <link href="~/css/Style.css" rel="stylesheet" />
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/Style.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -35,6 +35,9 @@
                     <li class="nav-item active">
                         <a class="nav-link text-dark" href="/home/contactus">Contact</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-dark" href="/book/getallbooks">All Books</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -42,8 +45,8 @@
     <main role="main">
         @RenderBody()
     </main>
-
-    <footer class="border-top card-footer text-muted text-center fixed-bottom">
+    <br /><br />
+    <footer class="border-top card-footer text-muted text-center">
         <div class="container">
             Copyright &copy; Book Store @DateTime.Now.Year
         </div>

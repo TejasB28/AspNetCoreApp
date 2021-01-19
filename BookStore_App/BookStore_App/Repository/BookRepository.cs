@@ -27,11 +27,13 @@ namespace BookStore_App.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){Id = 1,Title = "MVC",Author="tejas",Price=450},
-                new BookModel(){Id = 2,Title = "C#",Author="Vijay",Price=500},
-                new BookModel(){Id = 3,Title = "Java",Author="James",Price=550},
-                new BookModel(){Id = 4,Title = ".net",Author="ajay",Price=810},
-                new BookModel(){Id = 5,Title = "PHP",Author="Korth",Price=350},
+                new BookModel(){Id = 1,Title = "MVC",Author="tejas",Price=450,description="This is description of MVC Book"},
+                new BookModel(){Id = 2,Title = "C#",Author="Vijay",Price=500,description="This is description of C# Book"},
+                new BookModel(){Id = 3,Title = "Java",Author="James",Price=550,description="This is description of Java Book"},
+                new BookModel(){Id = 4,Title = ".net",Author="ajay",Price=810,description="This is description of .net Book"},
+                new BookModel(){Id = 5,Title = "PHP",Author="Korth",Price=350,description="This is description of PHP Book"},
+                new BookModel(){Id = 6,Title = "Azure Devops",Author="splashgain",Price=740,description="This is description of Azure Devops Book"},
+                new BookModel(){Id = 7,Title = "DBMS",Author="Korth",Price=950,description="This is description of DBMS Book"},
             };
         }
     }

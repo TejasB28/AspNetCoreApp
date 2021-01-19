@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.logo{
+﻿.logo{
     height:200px;
     width:200px;
     color:aqua;
@@ -18,17 +15,12 @@ html{
     min-height:100%;
 }
 
-body{
-    /*Margin bottom by footer height*/
-    margin-bottom:60px;
-}
-
-.footer{
+footer{
     position:absolute;
     bottom:0;
     width:100%;
     white-space:nowrap;
-    line-height:60px;  /*Vertically center text here*/
+    line-height:30px;  /*Vertically center text here*/
 }
 
 .membership-img{
