@@ -1,9 +1,4 @@
-﻿@using BookStore_App.Models;
-@model IEnumerable<BookModel>
-
-@{
-    Layout = "_Layout";
-}
+﻿@model IEnumerable<BookModel>
 
 @*either we can Pass the entire namespace or we can use this method also*@
 
@@ -16,12 +11,13 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <img src="#" class="card-img-top" alt="book_image1" width="50" height="200">
+                    <hr />
                     <div class="card-body">
                         <h3 class="card-title">@book.Title</h3>
                         <p class="card-text">@book.description</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                <a href="/book/getbook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
                             </div>
                             <small class="text-muted">@book.Author</small>
                         </div>

@@ -1,12 +1,41 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿@* Viewbag
+        @{
+        // annonymous data
+        dynamic data = ViewBag.Data;
+    }
+    for object
+        Id = @ViewBag.Type.Id<br />
+        Name = @ViewBag.Type.Author
+    for annoymous data
+        @data.name
+        @data.Id*@
+
+@*viewdata
+    @{
+        var bookInfo = ViewData["book"] as BookModel;
+    }
+    @ViewData["property1"]
+    <h1>Id = @bookInfo.Id </h1>
+    <h1>Author = @bookInfo.Author </h1>*@
+
+@*@{
+        ViewData["Title"] = "Home";
+    }*@
+
+@*ViewDataAttribute
+        @ViewData["CustomProperty"]
+    
+    @{
+        var book = ViewData["Book"] as BookModel;
+    }
+    <h1>Id=@book.Id</h1>
+    <h1>Name=@book.Title</h1>*@
 
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to BookStore</h1>
         <p class="lead text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
         <p>
@@ -14,7 +43,7 @@
         </p>
     </div>
 </section>
-    
+
 <div class="py-5 bg-light">
     <div class="container">
         <h3 class="h3">Top books</h3>
@@ -64,3 +93,21 @@
         </div>
     </div>
 </div>
+
+@*@section breadcrumb{
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Page 1</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Index</li>
+            </ol>
+        </nav>
+    }*@
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //alert("Document is ready");
+        });
+    </script>
+}

@@ -12,6 +12,9 @@ namespace BookStore_App.Controllers
     {
         private readonly BookRepository _bookRepository = null;
 
+        [ViewData]
+        public string Title { get; set; }
+
         public BookController()
         {
             _bookRepository = new BookRepository();
@@ -19,6 +22,7 @@ namespace BookStore_App.Controllers
 
         public ViewResult GetAllBooks()
         {
+            Title = "All Books";
             var data = _bookRepository.GetAllBooks();
             return View(data);
         }
@@ -26,7 +30,8 @@ namespace BookStore_App.Controllers
         public ViewResult GetBook(int id)
         {
             var data = _bookRepository.GetBookById(id);
-            return View();
+            Title = "Book Detail - " +data.Title;
+            return View(data);
         }
 
         public ViewResult SearchBook(string bookname, string authorname)
@@ -36,3 +41,9 @@ namespace BookStore_App.Controllers
         }
     }
 }
+
+
+//dynamic views
+//dynamic data = new ExpandoObject();
+//data.book = _bookRepository.GetBookById(id);
+//data.name = "Tejas";
