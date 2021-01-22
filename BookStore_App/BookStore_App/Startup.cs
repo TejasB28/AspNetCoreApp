@@ -33,43 +33,50 @@ namespace BookStore_App
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();  // For Using static Files in application with default content folder.
-
-            // For using static files in application for accessing files from another folder
-            // app.UseStaticFiles(new StaticFileOptions() 
-            // {
-            //     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
-            //     RequestPath = "/StaticFiles"
-            // });
-
-
-            // adding middleware to application
-
-            // app.Use(async (context, next) =>
-            // {
-            //     await context.Response.WriteAsync("Hello from First MiddleWare");
-
-            //     await next();
-
-            //     await context.Response.WriteAsync("Hello from First MiddleWare responce");
-            // });
-
+            app.UseStaticFiles();  // For Using static Files in application with default content folder.       
+            
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
             });
-
-            //Adding new Route as middleware
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.Map("/tejas", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello Tejas!");
-            //    });
-            //});
         }
     }
 }
+
+
+// For using static files in application for accessing files from another folder
+// app.UseStaticFiles(new StaticFileOptions() 
+// {
+//     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
+//     RequestPath = "/StaticFiles"
+// });
+
+
+// adding middleware to application
+
+// app.Use(async (context, next) =>
+// {
+//     await context.Response.WriteAsync("Hello from First MiddleWare");
+
+//     await next();
+
+//     await context.Response.WriteAsync("Hello from First MiddleWare responce");
+// });
+
+
+//Adding new Route as middleware
+
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.Map("/tejas", async context =>
+//    {
+//        await context.Response.WriteAsync("Hello Tejas!");
+//    });
+//});
+
+// For creating default route
+//endpoints.MapControllerRoute(
+//    name: "default",
+//    pattern: "bookApp/{controller=Home}/{action=Index}/{id?}");
