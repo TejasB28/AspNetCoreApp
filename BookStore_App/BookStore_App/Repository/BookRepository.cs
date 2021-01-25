@@ -1,4 +1,5 @@
-﻿using BookStore_App.Models;
+﻿using BookStore_App.Data;
+using BookStore_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,31 @@ namespace BookStore_App.Repository
 {
     public class BookRepository
     {
+        private readonly BookStoreContext _context = null;      //instance of context class for database
+
+        public BookRepository(BookStoreContext context)         // Dependancy Injection, as we are adds the context in startup it will resolve it automatically
+        {
+            _context = context;
+        }
+
+        public int AddNewBook(BookModel model)
+        {
+            var newBook = new Books()           //create object of properties that we want to fetch
+            {
+                Author = model.Author,
+                CreatedOn = DateTime.UtcNow,
+                description = model.description,
+                Title = model.Title,
+                TotalPages = model.TotalPages,
+                UpdatedOn=DateTime.UtcNow
+            };
+
+            _context.Books.Add(newBook);            // add new data to context
+            _context.SaveChanges();                 // For save all the changes if we use this method then only app hits db.
+
+            return newBook.Id;                      // here we return Id that are associated
+        }
+        // after execution of the record savechanges() method can create Id for this record and that will be associated with the newBook object.
         public List<BookModel> GetAllBooks()
         {
             return DataSource();

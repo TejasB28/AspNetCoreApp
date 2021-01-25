@@ -1,6 +1,9 @@
+using BookStore_App.Data;
+using BookStore_App.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +26,12 @@ namespace BookStore_App
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();  //For Runtime compilation of razor file
 #endif
+            // Add Context Information and connection string to application 
+            services.AddDbContext<BookStoreContext>(
+                options => options.UseSqlServer("server=.;Database=BookStore;Integrated Security=True;"));
+            // here we give coonection string hardcoded but in real time application we get this from appsettings.json file
+
+            services.AddScoped<BookRepository, BookRepository>();  // Code for dependancy injection
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
