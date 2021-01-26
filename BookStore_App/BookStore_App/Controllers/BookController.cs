@@ -52,11 +52,18 @@ namespace BookStore_App.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-            int id =await _bookRepository.AddNewBook(bookModel);
-            if(id>0)
+            Title = "Add Book";
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewBook),new { isSuccess=true , bookId = id});
+                int id = await _bookRepository.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                }
             }
+
+            ModelState.AddModelError("", "This is My Custom Error Messages");
+            ModelState.AddModelError("", "This is My second Custom Error Messages");
             return View();
         }
     }
