@@ -1,6 +1,7 @@
 ﻿using BookStore_App.Models;
 using BookStore_App.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +42,30 @@ namespace BookStore_App.Controllers
             return View();
         }
 
-        public ViewResult AddNewBook(bool isSuccess = false,int bookId=0)
+        public ViewResult AddNewBook(bool isSuccess = false,int bookId = 0)
         {
+            var model = new BookModel()
+            {
+                // Language = "2"
+            };
+
+            // var group1 = new SelectListGroup() { Name="Group 1"};           // Create instance of SelectListGroup
+          
+
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text="Hindi",Value="1"},
+            //    new SelectListItem(){Text="Marathi ",Value="2"},
+            //    new SelectListItem(){Text="English",Value="3"},
+            //    new SelectListItem(){Text="French",Value="4"},
+            //    new SelectListItem(){Text="Chinese",Value="5"},
+            //    new SelectListItem(){Text="Tamil",Value="6"},
+            //    new SelectListItem(){Text="Janapanese",Value="7"},
+            //};
+
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
-            Title = "Add Book";
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -62,9 +81,30 @@ namespace BookStore_App.Controllers
                 }
             }
 
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text="Hindi",Value="1"},
+            //    new SelectListItem(){Text="Marathi ",Value="2"},
+            //    new SelectListItem(){Text="English",Value="3"},
+            //    new SelectListItem(){Text="French",Value="4"},
+            //    new SelectListItem(){Text="Chinese",Value="5"},
+            //    new SelectListItem(){Text="Tamil",Value="6"},
+            //    new SelectListItem(){Text="Janapanese",Value="7"},
+            //};
+
             ModelState.AddModelError("", "This is My Custom Error Messages");
             ModelState.AddModelError("", "This is My second Custom Error Messages");
             return View();
+        }
+
+        private List<LanguageModel> GetLanguage()
+        {
+            return new List<LanguageModel>()
+            {
+                new LanguageModel() { Id = 1, Text = "Hindi"},
+                new LanguageModel() { Id = 2, Text = "Marathi"},
+                new LanguageModel() { Id = 3, Text = "English"}
+            };
         }
     }
 }
@@ -74,3 +114,10 @@ namespace BookStore_App.Controllers
 //dynamic data = new ExpandoObject();
 //data.book = _bookRepository.GetBookById(id);
 //data.name = "Tejas";
+
+//Using SelectListItem 
+//ViewBag.Language = GetLanguage().Select(x => new SelectListItem()
+//{
+//    Text = x.Text,
+//    Value=x.Id.ToString()
+//}).ToList();
