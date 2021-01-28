@@ -11,9 +11,9 @@ namespace BookStore_App.Models
     public class BookModel
     {
         public int Id { get; set; }
-        //[StringLength(100,MinimumLength =2)]
-        //[Required(ErrorMessage ="Please enter the title of the book")]
-        [MyCustomValidation("abc")]
+        [StringLength(100, MinimumLength = 2)]
+        [Required(ErrorMessage = "Please enter the title of the book")]
+        // [MyCustomValidation("abc")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter author name")]
         public string Author { get; set; }

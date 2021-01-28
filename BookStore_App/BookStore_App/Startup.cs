@@ -23,8 +23,14 @@ namespace BookStore_App
         {
             services.AddControllersWithViews();     //For setting up MVC envirnment
 
+            //For Runtime compilation of razor file
 #if DEBUG
-            services.AddRazorPages().AddRazorRuntimeCompilation();  //For Runtime compilation of razor file
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+                
+            // Uncomment this code to disable client side validation
+            //    .AddViewOptions(option=> {
+            //    option.HtmlHelperOptions.ClientValidationEnabled = false;
+            //});  
 #endif
             // Add Context Information and connection string to application 
             services.AddDbContext<BookStoreContext>(
