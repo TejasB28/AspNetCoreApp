@@ -20,13 +20,14 @@ namespace BookStore_App.Models
         public string description { get; set; }
         public string Category { get; set; }
         [Required(ErrorMessage ="Please choose the language of book")]
+        public int LanguageId { get; set; }
         public string Language { get; set; }
-
-        [Required(ErrorMessage = "Please choose the languages of book")]
-        public LanguageEnum LanguageEnum { get; set; }
-
         [Required(ErrorMessage = "Please enter the total pages")]
         [Display(Name = "Total Pages of Book")]
         public int? TotalPages { get; set; }  
     }
 }
+
+//Enum for language
+//[Required(ErrorMessage = "Please choose the languages of book")]
+//public LanguageEnum LanguageEnum { get; set; }

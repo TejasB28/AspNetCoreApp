@@ -31,7 +31,9 @@ namespace BookStore_App
                 options => options.UseSqlServer("server=.;Database=BookStore;Integrated Security=True;"));
             // here we give coonection string hardcoded but in real time application we get this from appsettings.json file
 
-            services.AddScoped<BookRepository, BookRepository>();  // Code for dependancy injection
+            services.AddScoped<BookRepository, BookRepository>();  // Code for dependancy injection Bookrepository
+
+            services.AddScoped<LanguageRepository, LanguageRepository>();  // Code for dependancy injection LanguageRepository
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

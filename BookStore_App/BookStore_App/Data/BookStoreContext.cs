@@ -16,6 +16,7 @@ namespace BookStore_App.Data
 
         public DbSet<Books> Books { get; set; }  // Entity class and name that we specify here that will be a table name.
 
+        public DbSet<Language> Language { get; set; }
         // configuaration database
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
