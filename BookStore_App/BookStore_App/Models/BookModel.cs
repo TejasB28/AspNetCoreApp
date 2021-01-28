@@ -4,14 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using BookStore_App.Enums;
+using BookStore_App.Helper;
 
 namespace BookStore_App.Models
 {
     public class BookModel
     {
         public int Id { get; set; }
-        [StringLength(100,MinimumLength =5)]
-        [Required(ErrorMessage ="Please enter the title of the book")]
+        //[StringLength(100,MinimumLength =2)]
+        //[Required(ErrorMessage ="Please enter the title of the book")]
+        [MyCustomValidation("abc")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter author name")]
         public string Author { get; set; }
