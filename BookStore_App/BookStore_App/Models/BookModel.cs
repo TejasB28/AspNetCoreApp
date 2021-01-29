@@ -30,8 +30,12 @@ namespace BookStore_App.Models
         public int? TotalPages { get; set; }
         [Display(Name ="Choose the cover photo of your Book")]
         [Required]
-        public IFormFile CoverPhoto { get; set; }
+        public IFormFile CoverPhoto { get; set; }       // for single photo
         public string CoverImageUrl { get; set; }
+        [Display(Name = "Choose the gallery images of your Book")]
+        [Required]
+        public IFormFileCollection GalleryFiles { get; set; }   // for multiple photos
+        public List<GalleryModel> Gallery { get; set; }
     }
 }
 

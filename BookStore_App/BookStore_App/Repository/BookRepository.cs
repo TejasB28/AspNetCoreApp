@@ -31,6 +31,16 @@ namespace BookStore_App.Repository
                 CoverImageUrl = model.CoverImageUrl
             };
 
+            newBook.bookGallery = new List<BookGallery>();      // List For Adding Multiple Images
+
+            foreach (var file in model.Gallery)
+            {
+                newBook.bookGallery.Add(new BookGallery() { 
+                    Name=file.Name,
+                    URL=file.URL
+                });
+            }
+
             await _context.Books.AddAsync(newBook);            // add new data to context
             await _context.SaveChangesAsync();                 // For save all the changes if we use this method then only app hits db.
 
@@ -77,7 +87,12 @@ namespace BookStore_App.Repository
                     LanguageId = book.LanguageId,
                     Language = book.Language.Name,
                     Price = book.Price,
-                    CoverImageUrl=book.CoverImageUrl
+                    CoverImageUrl = book.CoverImageUrl,
+                    Gallery = book.bookGallery.Select(g => new GalleryModel() {
+                        Id=g.Id,
+                        Name=g.Name,
+                        URL=g.URL
+                    }).ToList()
                 }).FirstOrDefaultAsync();
             //_context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();  for apply some condition
         }

@@ -1,9 +1,11 @@
 ﻿using BookStore_App.Models;
 using BookStore_App.Repository;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -70,13 +72,23 @@ namespace BookStore_App.Controllers
                 if(bookModel.CoverPhoto!=null)
                 {
                     string folder = "books/cover/";
-                    folder += Guid.NewGuid().ToString() + "_" + bookModel.CoverPhoto.FileName;
+                    bookModel.CoverImageUrl = await UploadImage(folder, bookModel.CoverPhoto);
+                }
 
-                    bookModel.CoverImageUrl = "/" + folder;
+                if (bookModel.GalleryFiles != null)
+                {
+                    string folder = "books/gallery/";
+                    bookModel.Gallery = new List<GalleryModel>();
 
-                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath,folder);
-
-                    await bookModel.CoverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
+                    foreach (var file in bookModel.GalleryFiles)
+                    {
+                        var gallery = new GalleryModel()
+                        {
+                            Name=file.FileName,
+                            URL = await UploadImage(folder, file)
+                        };
+                        bookModel.Gallery.Add(gallery);
+                    }
                 }
 
                 int id = await _bookRepository.AddNewBook(bookModel);
@@ -91,6 +103,18 @@ namespace BookStore_App.Controllers
             ModelState.AddModelError("", "This is My Custom Error Messages");
             ModelState.AddModelError("", "This is My second Custom Error Messages");
             return View();
+        }
+
+        private async Task<string> UploadImage(string folderPath,IFormFile file)  // for upload the book in corresponding folder
+        {
+            
+            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+
+            string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderPath);
+
+            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+
+            return "/" + folderPath;
         }
     }
 }

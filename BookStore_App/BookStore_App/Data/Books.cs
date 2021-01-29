@@ -19,5 +19,6 @@ namespace BookStore_App.Data
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public Language Language { get; set; }      //Create relationship with language table
+        public ICollection<BookGallery> bookGallery { get; set; }
     }
 }
