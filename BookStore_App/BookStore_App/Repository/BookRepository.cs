@@ -25,9 +25,10 @@ namespace BookStore_App.Repository
                 CreatedOn = DateTime.UtcNow,
                 description = model.description,
                 Title = model.Title,
-                LanguageId=model.LanguageId,
+                LanguageId = model.LanguageId,
                 TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
-                UpdatedOn=DateTime.UtcNow
+                UpdatedOn = DateTime.UtcNow,
+                CoverImageUrl = model.CoverImageUrl
             };
 
             await _context.Books.AddAsync(newBook);            // add new data to context
@@ -54,7 +55,8 @@ namespace BookStore_App.Repository
                         TotalPages=book.TotalPages,
                         Id=book.Id,
                         LanguageId=book.LanguageId,
-                        Price=book.Price
+                        Price=book.Price,
+                        CoverImageUrl=book.CoverImageUrl
                     });
                 }
             }
@@ -74,7 +76,8 @@ namespace BookStore_App.Repository
                     Id = book.Id,
                     LanguageId = book.LanguageId,
                     Language = book.Language.Name,
-                    Price = book.Price
+                    Price = book.Price,
+                    CoverImageUrl=book.CoverImageUrl
                 }).FirstOrDefaultAsync();
             //_context.Books.Where(x => x.Id == id).FirstOrDefaultAsync();  for apply some condition
         }
