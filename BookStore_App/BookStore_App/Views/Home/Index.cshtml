@@ -18,46 +18,13 @@
         @*<p big> Top Books using attribute</p>*@
         <div class="row">
             <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="~/images/img1.jpg" class="card-img-top" alt="book_image1" width="200" height="300">
-                    <div class="card-body">
-                        <p class="card-text">This Section is used to display the information of books</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author Name</small>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_bookThumbnail" model="new BookModel()" />   
             </div>
             <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="~/images/img2.jpeg" class="card-img-top" alt="book_image2" width="200" height="300">
-                    <div class="card-body">
-                        <p class="card-text">This Section is used to display the information of books</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author Name</small>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_bookThumbnail" model="new BookModel()" />
             </div>
             <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="~/images/img3.jpeg" class="card-img-top" alt="book_image3" width="200" height="300">
-                    <div class="card-body">
-                        <p class="card-text">This Section is used to display the information of books</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
-                            </div>
-                            <small class="text-muted">Author Name</small>
-                        </div>
-                    </div>
-                </div>
+                <partial name="_bookThumbnail" model="new BookModel()" />
             </div>
         </div>
     </div>
